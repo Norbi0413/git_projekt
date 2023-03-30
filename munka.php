@@ -34,4 +34,28 @@ print '<br /><br />' . $x - $y;
 print "Konfliktus lesz...";
 
 >>>>>>> kivonas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Szorzás
+//-------------------
+
+
+$kicsi = 3;
+$nagy = 23;
+
+print ($kicsi * $nagy) . '<br /><br />';
+
+
 ?>
