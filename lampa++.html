@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lámpa++</title>
+   <style>
+      *
+      {
+         padding: 0;
+         margin: 0;
+      }
+      body
+      {
+         background-color: #1e1e1e;
+         height: 100vh;
+
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+      .lampatest
+      {
+         width: 250px;
+         height: 650px;
+         border-radius: 5px;
+         box-shadow: inset 0 0 15px gray;
+         position: relative;
+      }
+      .piros
+      {
+         position: absolute;
+         top: 10px;
+         left: 25px;
+         width: 200px;
+         height: 200px;
+         border-radius: 50%;
+         box-shadow: inset 0 0 15px gray;
+         text-align: center;
+         line-height: 200px;
+         color: yellow;
+         font-size: 8em;
+      }
+      .pir
+      {
+         background-color: red;
+      }
+      .sarga
+      {
+         position: absolute;
+         top: 220px;
+         left: 25px;
+         width: 200px;
+         height: 200px;
+         border-radius: 50%;
+         box-shadow: inset 0 0 15px gray;
+      }
+      .zold
+      {
+         position: absolute;
+         top: 430px;
+         left: 25px;
+         width: 200px;
+         height: 200px;
+         border-radius: 50%;
+         box-shadow: inset 0 0 15px gray;
+      }
+      .mento
+      {
+         height: 150px;
+         width: 250px;
+         position: absolute;
+         left: 10px;
+         top: 10px;
+         border-radius: 15px;
+      }
+      .villamos
+      {
+         height: 150px;
+         width: 250px;
+         position: absolute;
+         right: 10px;
+         top: 10px;
+         border-radius: 15px;
+      }
+      .nev
+      {
+         position: absolute;
+         right: 10px;
+         bottom: 10px;
+         font-size: 2em;
+         color: grey;
+      }
+      .reset
+      {
+         position: absolute;
+         left: 10px;
+         bottom: 10px;
+         font-size: 2em;
+         color: grey;
+      }
+      .mento:hover, .villamos:hover
+      {
+         cursor: pointer;
+         box-shadow: 0 0 15px grey;
+      }
+      .reset:hover
+      {
+         cursor: pointer;
+         text-shadow: 0 0 15px grey;
+      }
+   </style>
+</head>
+<body>
+   <div class="lampatest" onload="start()">
+      <div class="piros pir" id="p">4</div>
+      <div class="sarga" id="s"></div>
+      <div class="zold" id="z"></div>
+   </div>
+   <img src="mento.jpg" class="mento" onclick="piros()">
+   <img src="villamos.jpg" class="villamos" onclick="villog()">
+   <div class="reset" onclick="reset()">reset</div>
+
+   <div class="nev">&copy;2023 Zachar Norbert</div>
+</body>
+</html>
+<script>
+
+   var alap = setInterval(start,800);
+   var sarga = 0;
+   var szam = 4;
+
+   function start()
+   {
+      if (document.getElementById('p').style.backgroundColor == '' && szam >= 1) {
+         document.getElementById('z').style.backgroundColor = '';
+         document.getElementById('p').style.backgroundColor = 'red';
+         szam = szam - 1;
+         document.getElementById('p').innerHTML = szam;
+         document.getElementById('p').classList.add('pir')
+      } else if (document.getElementById('p').style.backgroundColor == 'red' && szam >= 0) {
+         document.getElementById('p').style.backgroundColor = '';
+      }
+      if (szam == 0 && document.getElementById('p').style.backgroundColor == '' && document.getElementById('s').style.backgroundColor == '')
+      {
+         document.getElementById('s').style.backgroundColor = 'yellow';
+         document.getElementById('p').classList.remove('pir')
+      }
+      else if (szam == 0 && document.getElementById('s').style.backgroundColor == 'yellow') {
+         document.getElementById('s').style.backgroundColor = '';
+         document.getElementById('z').style.backgroundColor = 'green';
+         szam = 5;
+      }
+
+   }
+
+   function piros()
+   {
+      clearInterval(alap)
+      clearInterval(sarga)
+
+      document.getElementById('s').style.backgroundColor = '';
+      document.getElementById('z').style.backgroundColor = '';
+
+      document.getElementById('p').style.backgroundColor = 'red'
+   }
+
+   function villog() {
+      clearInterval(sarga);
+      sarga = setInterval(villog, 1000);
+      clearInterval(alap);
+      document.getElementById('z').style.backgroundColor = '';
+      document.getElementById('p').style.backgroundColor = '';
+      if (document.getElementById('s').style.backgroundColor == '') {
+         document.getElementById('s').style.backgroundColor = 'yellow';
+      } else if (document.getElementById('s').style.backgroundColor == 'yellow') {
+         document.getElementById('s').style.backgroundColor = '';
+      }
+      document.getElementById('p').classList.remove('pir')
+   }
+
+   function reset()
+   {
+      location.reload(alap)
+   }
+
+</script>
