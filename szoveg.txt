@@ -2,3 +2,5 @@ első sor
 
 git config --global user.email "e18.zachar.norbert@palfy-vizugyi.hu"
 git config --global user.name "Norbi"
+
+asddsa
