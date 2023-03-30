@@ -5,7 +5,8 @@
 //Összeadás
 //-------------------
 
-$a = 12;
+<<<<<<< HEAD
+$a = 105;
 $b = 17;
 $c = 12;
 
@@ -26,6 +27,11 @@ $x = 35;
 $y = 19;
 
 print '<br /><br />' . $x - $y;
+
+<<<<<<< HEAD
+>>>>>>> kivonas
+=======
+print "Konfliktus lesz...";
 
 >>>>>>> kivonas
 ?>
